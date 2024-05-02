@@ -108,6 +108,22 @@ describe("ArticlesForm tests", () => {
         await waitFor(() => {
             expect(screen.getByText(/Max length 100 characters/)).toBeInTheDocument();
         });
+
+        const explanationInput = screen.getByTestId(`${testId}-explanation`);
+        fireEvent.change(explanationInput, { target: { value: "a".repeat(0) } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+        });
+
+        const emailInput = screen.getByTestId(`${testId}-email`);
+        fireEvent.change(emailInput, { target: { value: "a".repeat(0) } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/Email is required./)).toBeInTheDocument();
+        });
     });
 
 });

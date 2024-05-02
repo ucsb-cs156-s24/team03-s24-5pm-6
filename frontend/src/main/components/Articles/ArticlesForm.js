@@ -133,7 +133,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                             {...register("dateAdded", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateAdded && 'DateAdded is required. '}
+                            {errors.dateAdded && 'DateAdded is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
