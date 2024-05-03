@@ -126,7 +126,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                     <Form.Group className="mb-3" >
                         <Form.Label htmlFor="dateAdded">Date Added</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-dateAdded"
+                            data-testid="ArticlesForm-dateAdded"
                             id="dateAdded"
                             type="datetime-local"
                             isInvalid={Boolean(errors.dateAdded)}
