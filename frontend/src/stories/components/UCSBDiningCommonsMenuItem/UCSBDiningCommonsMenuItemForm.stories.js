@@ -1,8 +1,6 @@
 import React from 'react';
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
 import {ucsbDiningCommonsMenuItemFixtures} from "fixtures/ucsbDiningCommonsMenuItemFixtures";
-import RestaurantForm from "../../../main/components/Restaurants/RestaurantForm";
-import {restaurantFixtures} from "../../../fixtures/restaurantFixtures";
 
 export default {
     title: 'components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm',
