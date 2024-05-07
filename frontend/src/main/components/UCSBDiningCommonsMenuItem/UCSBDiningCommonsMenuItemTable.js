@@ -2,9 +2,9 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ucsbDiningCommonsMenuItemUtils";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
-import { toast } from "react-toastify";
 
 export default function RestaurantTable({
     menuItems,
@@ -20,19 +20,8 @@ export default function RestaurantTable({
     // Stryker disable all : hard to test for query caching
 
     const deleteMutation = useBackendMutation(
-        cell => ({
-            url: 'api/ucsbdiningcommonsmenuitem',
-            method: 'DELETE',
-            params: {
-                id: cell.row.values.id,
-            },
-        }),
-        {
-            onSuccess: message => {
-                console.log(message);
-                toast(message);
-            },
-        },
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
         ["/api/ucsbdiningcommonsmenuitem/all"]
     );
     // Stryker restore all
