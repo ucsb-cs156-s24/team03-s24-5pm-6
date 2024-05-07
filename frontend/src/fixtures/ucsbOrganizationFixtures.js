@@ -3,7 +3,7 @@ const organizationFixtures = {
     [
       {
         "orgCode": "SWE",
-        "orgTranslationShort": "Soc of Wom Eng",
+        "orgTranslationShort": "Soc of Women Eng",
         "orgTranslation": "Society of Women Engineers",
         "inactive": false      
       }
