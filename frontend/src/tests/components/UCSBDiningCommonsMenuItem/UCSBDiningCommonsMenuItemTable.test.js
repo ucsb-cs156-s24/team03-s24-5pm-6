@@ -4,6 +4,8 @@ import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMen
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { onDeleteSuccess } from "main/utils/ucsbDiningCommonsMenuItemUtils";
+import { toast } from "react-toastify";
 
 
 
@@ -13,6 +15,11 @@ jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useNavigate: () => mockedNavigate
 }));
+
+jest.mock('main/utils/useBackend', () => ({
+    ...jest.requireActual('main/utils/useBackend'),
+    useBackend: () => mocked
+}))
 
 describe("UCSBDiningCommonsMenuItemTable tests", () => {
     const queryClient = new QueryClient();
@@ -172,5 +179,8 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
 
         // act - click the delete button
         fireEvent.click(deleteButton);
+
+        // assert - check that the alert appeared
+        expect(deleteButton).toHaveClass("btn-danger");
     });
 });
