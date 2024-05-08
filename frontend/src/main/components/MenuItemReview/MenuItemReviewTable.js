@@ -11,7 +11,7 @@ export default function MenuItemReviewTable({ reviews, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/menuitemreviews/edit/${cell.row.values.id}`)
+        navigate(`/menuitemreview/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
