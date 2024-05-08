@@ -118,5 +118,29 @@ describe("UserTable tests", () => {
 
   });
 
+  test("Delete button calls delete callback", async () => {
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
+
+    // act - render the component
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestTable helpRequests={helpRequestFixtures.threeHelpRequests} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    // assert - check that the expected content is rendered
+    expect(await screen.findByTestId(`HelpRequestTable-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(screen.getByTestId(`HelpRequestTable-cell-row-0-col-requesterEmail`)).toHaveTextContent("mario@mushroomkingdom.gov");
+
+    const deleteButton = screen.getByTestId(`HelpRequestTable-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+
+    // act - click the delete button
+    fireEvent.click(deleteButton);
+  });
+
 });
 
