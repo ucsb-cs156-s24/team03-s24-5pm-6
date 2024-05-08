@@ -3,9 +3,9 @@ const organizationFixtures = {
     [
       {
         "orgCode": "SWE",
-        "orgTranslationShort": "Soc of Wom Eng",
+        "orgTranslationShort": "Soc of Women Eng",
         "orgTranslation": "Society of Women Engineers",
-        "inactive": false      
+        "inactive": "false "     
       }
     ],
 
@@ -15,21 +15,21 @@ const organizationFixtures = {
             "orgCode": "EWB",
             "orgTranslationShort": "Eng Wo Bor",
             "orgTranslation": "Engineers Without Borders",
-            "inactive": false      
+            "inactive": "false"
         },
 
         {
             "orgCode": "ZPR",
             "orgTranslationShort": "Ze Ph Rh",
             "orgTranslation": "Zeta Phi Rho",
-            "inactive": false      
+            "inactive": "false"      
         },
 
         {
             "orgCode": "SKY",
             "orgTranslationShort": "Skydiving",
             "orgTranslation": "UCSB Skydiving Club",
-            "inactive": true
+            "inactive": "true"
         },  
     ]
 };
