@@ -159,6 +159,7 @@ describe("ArticlesEditPage tests", () => {
             expect(emailField).toHaveValue("testing@gmail.com");
             expect(dateAddedField).toHaveValue("2022-03-14T15:00");
 
+            expect(submitButton).toHaveTextContent("Update");
             expect(submitButton).toBeInTheDocument();
 
             fireEvent.change(titleField, { target: { value: 'new article' } })
@@ -185,7 +186,6 @@ describe("ArticlesEditPage tests", () => {
 
         });
 
-       
     });
 });
 
