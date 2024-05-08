@@ -142,11 +142,9 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         <Form.Check
                             data-testid={testIdPrefix + "-solved"}
                             id="solved"
-                            type="checkbox"
-                            isInvalid={false}
-                            {...register("solved", {
-                                required: "Solved is required."
-                            })}
+                            type="switch"
+                            label="Solved?"
+                            {...register("solved", {})}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.solved?.message}

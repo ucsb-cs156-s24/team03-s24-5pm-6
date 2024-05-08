@@ -8,7 +8,7 @@ const helpRequestFixtures = {
         "explanation": "Mama mia",
         "solved": false
     },
-    threeDates: [
+    threeHelpRequests: [
         {
             "id": 1,
             "requesterEmail": "mario@mushroomkingdom.gov",
@@ -24,16 +24,16 @@ const helpRequestFixtures = {
             "teamId": "6pm-5",
             "tableOrBreakoutRoom": "41",
             "requestTime": "2023-01-03T00:00:00",
-            "explanation": "mario will not leave my residence",
+            "explanation": "luigi please stop",
             "solved": false
         },
         {
             "id": 3,
-            "requesterEmail": "luigi@mushroomkingdom.gov",
+            "requesterEmail": "qwerbyking@mushroomkingdom.gov",
             "teamId": "11pm-2",
-            "tableOrBreakoutRoom": "742",
-            "requestTime": "2024-01-03T00:00:00",
-            "explanation": "ran out of spaghetti",
+            "tableOrBreakoutRoom": "0",
+            "requestTime": "2024-05-07T00:00:00",
+            "explanation": "Gigz is refusing to leave my residence.",
             "solved": false
         },
     ]
