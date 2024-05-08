@@ -5,22 +5,30 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 
-
 const mockedNavigate = jest.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedNavigate
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedNavigate,
 }));
 
 describe("OrganizationTable tests", () => {
   const queryClient = new QueryClient();
-  const expectedHeaders = ["Organization Code", "Organization Name Short", "Organization Name Full", "Inactive"];
-  const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
+  const expectedHeaders = [
+    "Organization Code",
+    "Organization Name Short",
+    "Organization Name Full",
+    "Inactive",
+  ];
+  const expectedFields = [
+    "orgCode",
+    "orgTranslationShort",
+    "orgTranslation",
+    "inactive",
+  ];
   const testId = "OrganizationsTable";
 
   test("renders empty table correctly", () => {
-    
     // arrange
     const currentUser = currentUserFixtures.adminUser;
 
@@ -40,7 +48,9 @@ describe("OrganizationTable tests", () => {
     });
 
     expectedFields.forEach((field) => {
-      const fieldElement = screen.queryByTestId(`${testId}-cell-row-0-col-${field}`);
+      const fieldElement = screen.queryByTestId(
+        `${testId}-cell-row-0-col-${field}`
+      );
       expect(fieldElement).not.toBeInTheDocument();
     });
   });
@@ -53,7 +63,10 @@ describe("OrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={organizationFixtures.threeOrganizations} currentUser={currentUser} />
+          <OrganizationsTable
+            organizations={organizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -69,24 +82,43 @@ describe("OrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("EWB");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("Eng Wo Bor");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("Engineers Without Borders");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)
+    ).toHaveTextContent("EWB");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)
+    ).toHaveTextContent("Eng Wo Bor");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)
+    ).toHaveTextContent("Engineers Without Borders");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-inactive`)
+    ).toHaveTextContent("false");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("ZPR");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("Ze Ph Rh");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("Zeta Phi Rho");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent("false");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)
+    ).toHaveTextContent("ZPR");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)
+    ).toHaveTextContent("Ze Ph Rh");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)
+    ).toHaveTextContent("Zeta Phi Rho");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
+    ).toHaveTextContent("false");
 
-    const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    const editButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Edit-button`
+    );
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
-    const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Delete-button`
+    );
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
-
   });
 
   test("Has the expected column headers, content for ordinary user", () => {
@@ -97,7 +129,10 @@ describe("OrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-            <OrganizationsTable organizations={organizationFixtures.threeOrganizations} currentUser={currentUser} />
+          <OrganizationsTable
+            organizations={organizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -113,20 +148,35 @@ describe("OrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("EWB");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("Eng Wo Bor");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("Engineers Without Borders");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)
+    ).toHaveTextContent("EWB");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)
+    ).toHaveTextContent("Eng Wo Bor");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)
+    ).toHaveTextContent("Engineers Without Borders");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-inactive`)
+    ).toHaveTextContent("false");
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("ZPR");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("Ze Ph Rh");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent("Zeta Phi Rho");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent("false");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)
+    ).toHaveTextContent("ZPR");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)
+    ).toHaveTextContent("Ze Ph Rh");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)
+    ).toHaveTextContent("Zeta Phi Rho");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
+    ).toHaveTextContent("false");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
   });
-
 
   test("Edit button navigates to the edit page", async () => {
     // arrange
@@ -136,26 +186,40 @@ describe("OrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-            <OrganizationsTable organizations={organizationFixtures.threeOrganizations} currentUser={currentUser} />
+          <OrganizationsTable
+            organizations={organizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>
     );
 
     // assert - check that the expected content is rendered
-    expect(await screen.findByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("EWB");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("Eng Wo Bor");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent("Engineers Without Borders");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(
+      await screen.findByTestId(`${testId}-cell-row-0-col-orgCode`)
+    ).toHaveTextContent("EWB");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)
+    ).toHaveTextContent("Eng Wo Bor");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)
+    ).toHaveTextContent("Engineers Without Borders");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-inactive`)
+    ).toHaveTextContent("false");
 
-    const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    const editButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Edit-button`
+    );
     expect(editButton).toBeInTheDocument();
 
     // act - click the edit button
     fireEvent.click(editButton);
 
     // assert - check that the navigate function was called with the expected path
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organizations/edit/EWB'));
-
+    await waitFor(() =>
+      expect(mockedNavigate).toHaveBeenCalledWith("ucsborganizations/edit/EWB")
+    );
   });
 
   test("Delete button calls delete callback", async () => {
@@ -166,12 +230,17 @@ describe("OrganizationTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-            <OrganizationsTable organizations={organizationFixtures.threeOrganizations} currentUser={currentUser}/>
+          <OrganizationsTable
+            organizations={organizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>
     );
 
-    const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Delete-button`
+    );
     expect(deleteButton).toBeInTheDocument();
 
     // act - click the delete button

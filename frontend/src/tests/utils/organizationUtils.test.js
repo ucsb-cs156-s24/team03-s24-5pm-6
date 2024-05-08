@@ -43,7 +43,7 @@ describe("organizationUtils", () => {
 
             // assert
             expect(result).toEqual({
-                url: "/api/organizations",
+                url: "/api/ucsborganizations",
                 method: "DELETE",
                 params: { orgCode: "EWB" }
             });
