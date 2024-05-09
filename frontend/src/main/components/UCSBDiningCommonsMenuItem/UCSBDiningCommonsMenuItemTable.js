@@ -6,7 +6,7 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ucsbDiningC
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function RestaurantTable({
+export default function UCSBDiningCommonsMenuItemTable({
     menuItems,
     currentUser,
     testIdPrefix = "UCSBDiningCommonsMenuItemTable" }) {
