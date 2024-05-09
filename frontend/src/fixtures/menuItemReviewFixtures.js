@@ -19,7 +19,7 @@ const menuItemReviewFixtures = {
         {
             "id": 2,
             "itemId": 124,
-            "reviewerEmail": "fakeEmail3@gmail.com",
+            "reviewerEmail": "fakeEmail2@gmail.com",
             "stars": 3,
             "dateReviewed": "2022-02-02T13:00:00",
             "comments": "This is great!"
@@ -27,7 +27,7 @@ const menuItemReviewFixtures = {
         {
             "id": 3,
             "itemId": 125,
-            "reviewerEmail": "fakeEmail3@gmail.com",
+            "reviewerEmail": "fakeEmail1@gmail.com",
             "stars": 1,
             "dateReviewed": "2022-03-02T14:00:00",
             "comments": "This sucks!"
