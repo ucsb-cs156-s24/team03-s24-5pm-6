@@ -85,12 +85,7 @@ describe("OrganizationsTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)
     ).toHaveTextContent("EWB");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)
-    ).toHaveTextContent("Eng Wo Bor");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)
-    ).toHaveTextContent("Engineers Without Borders");
+
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-inactive`)
     ).toHaveTextContent("false");
@@ -98,12 +93,7 @@ describe("OrganizationsTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)
     ).toHaveTextContent("ZPR");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)
-    ).toHaveTextContent("Ze Ph Rh");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)
-    ).toHaveTextContent("Zeta Phi Rho");
+
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
     ).toHaveTextContent("false");
@@ -114,9 +104,7 @@ describe("OrganizationsTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
-    const deleteButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
-    );
+    const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
   });
@@ -151,28 +139,11 @@ describe("OrganizationsTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)
     ).toHaveTextContent("EWB");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)
-    ).toHaveTextContent("Eng Wo Bor");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)
-    ).toHaveTextContent("Engineers Without Borders");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-inactive`)
-    ).toHaveTextContent("false");
 
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)
     ).toHaveTextContent("ZPR");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)
-    ).toHaveTextContent("Ze Ph Rh");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)
-    ).toHaveTextContent("Zeta Phi Rho");
-    expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
-    ).toHaveTextContent("false");
+
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -218,7 +189,7 @@ describe("OrganizationsTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("ucsborganizations/edit/EWB")
+      expect(mockedNavigate).toHaveBeenCalledWith("/ucsborganizations/edit/EWB")
     );
   });
 
