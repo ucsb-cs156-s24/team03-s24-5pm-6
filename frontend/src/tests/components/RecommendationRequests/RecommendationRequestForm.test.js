@@ -61,6 +61,26 @@ describe("RecommendationRequestForm tests", () => {
 
     });
 
+    
+    test("No Error messages when professorEmail is not required", async () => {
+        const mockSubmitAction = jest.fn();
+    
+        render(
+            <Router>
+                <RecommendationRequestForm submitAction={mockSubmitAction} />
+            </Router>
+        );
+    
+        await screen.findByTestId("RecommendationRequestForm-requesterEmail");
+    
+        const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
+    
+        fireEvent.click(submitButton);
+    
+        // Assert that no error message for professorEmail is rendered
+        expect(screen.queryByText(/ProfessorEmail is required./)).not.toBeInTheDocument();
+    });
+
     test("No Error messsages on good input", async () => {
 
         const mockSubmitAction = jest.fn();

@@ -69,10 +69,10 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             id="professorEmail"
                             type="text"
                             isInvalid={Boolean(errors.professorEmail)}
-                            {...register("professorEmail", { required: true})}
+                            {...register("professorEmail", { required: "ProfessorEmail is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail && 'ProfessorEmail is required. '}
+                            {errors.professorEmail?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -84,12 +84,10 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             id="explanation"
                             type="text"
                             isInvalid={Boolean(errors.explanation)}
-                            {...register("explanation", {
-                                required: "Explanation is required."
-                            })}
+                            {...register("explanation", { required: true})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.explanation?.message}
+                        {errors.explanation && 'Explanation is required. '}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
