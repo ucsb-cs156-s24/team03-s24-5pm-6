@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
-describe("OrganizationTable tests", () => {
+describe("OrganizationsTable tests", () => {
   const queryClient = new QueryClient();
   const expectedHeaders = [
     "Organization Code",
