@@ -1,26 +1,20 @@
-# STARTER-team03
+# team03-s24-5pm-6
 
 Instructions: <https://ucsb-cs156.github.io/s24/lab/team03.html>
 
-TODO: change heading above to your repo name, e.g. `# team03-s24-4pm-4`
-
-TODO: Add a link to the deployed Dokku app for your team here, e.g.
-
 Deployments:
 
-* Prod: <https://team03.dokku-17.cs.ucsb.edu>
-* QA: <https://team03-qa.dokku-17.cs.ucsb.edu>
+* Prod: <https://team03.dokku-14.cs.ucsb.edu>
+* QA: <https://team03-qa.dokku-14.cs.ucsb.edu>
 
-TODO: Fill in this table with correct information. 
-
-| Table                     | Name         | Github Id |
-|---------------------------|--------------|-----------|
-| UCSBDiningCommonsMenuItem |              |           |
-| UCSBOrganization          |              |           |
-| RecommendationRequest     |              |           |
-| MenuItemReview            |              |           |
-| HelpRequest               |              |           |
-| Articles                  |              |           |
+| Table                     | Name         | Github Id       |
+|---------------------------|--------------|-----------------|
+| UCSBDiningCommonsMenuItem | Liz          | andyinnie       |
+| UCSBOrganization          | Lindsey      | lindseywn       |
+| RecommendationRequest     | Anika        | amisra0         |
+| MenuItemReview            | Yuji         | yuji-sakaguchi  |
+| HelpRequest               | Wesley       | jeffsmithepic   |
+| Articles                  | Diya         | diyaparm        |
 
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work

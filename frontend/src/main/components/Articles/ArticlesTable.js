@@ -1,20 +1,19 @@
 import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
-
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/articlesUtils"
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ucsbDiningCommonsMenuItemUtils";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDiningCommonsMenuItemTable({
-    menuItems,
+export default function ArticlesTable({
+    articles,
     currentUser,
-    testIdPrefix = "UCSBDiningCommonsMenuItemTable" }) {
+    testIdPrefix = "ArticlesTable" }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsbdiningcommonsmenuitem/edit/${cell.row.values.id}`)
+        navigate(`/articles/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -22,9 +21,9 @@ export default function UCSBDiningCommonsMenuItemTable({
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdiningcommonsmenuitem/all"]
+        ["/api/articles/all"]
     );
-    // Stryker restore all
+    // Stryker restore all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
@@ -36,26 +35,34 @@ export default function UCSBDiningCommonsMenuItemTable({
         },
 
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'Title',
+            accessor: 'title',
         },
         {
-            Header: 'Dining commons code',
-            accessor: 'diningCommonsCode',
+            Header: 'Url',
+            accessor: 'url',
         },
         {
-            Header: 'Station',
-            accessor: 'station',
+            Header: 'Explanation',
+            accessor: 'explanation',
         },
+        {
+            Header: 'Email',
+            accessor: 'email',
+        },
+        {
+            Header: 'Date Added',
+            accessor: 'dateAdded',
+        }
     ];
 
     if (hasRole(currentUser, "ROLE_ADMIN")) {
         columns.push(ButtonColumn("Edit", "primary", editCallback, testIdPrefix));
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix));
-    }
+    } 
 
     return <OurTable
-        data={menuItems}
+        data={articles}
         columns={columns}
         testid={testIdPrefix}
     />;
