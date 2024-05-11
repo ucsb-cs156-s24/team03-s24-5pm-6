@@ -1,4 +1,3 @@
-
 package edu.ucsb.cs156.example.entities;
 
 import java.time.LocalDateTime;
@@ -17,16 +16,14 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "articles")
-public class Articles {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
-
-  
-  private String title;
-  private String url;
-  private String explanation;
-  private String email;
-  private LocalDateTime dateAdded;
+@Entity(name = "menuitemreviews")
+public class MenuItemReview {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private long itemId;
+    private String reviewerEmail;
+    private int stars;  
+    private LocalDateTime dateReviewed;
+    private String comments;
 }
