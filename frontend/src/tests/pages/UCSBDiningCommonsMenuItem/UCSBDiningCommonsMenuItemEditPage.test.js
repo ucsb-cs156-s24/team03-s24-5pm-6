@@ -120,7 +120,7 @@ describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
 
             fireEvent.change(nameField, { target: { value: 'burger' } });
             fireEvent.change(dccField, { target: { value: 'dlg' } });
-            fireEvent.change(station, { target: { value: 'blue plate' } });
+            fireEvent.change(stationField, { target: { value: 'blue plate' } });
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
