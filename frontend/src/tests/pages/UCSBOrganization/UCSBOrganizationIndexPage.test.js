@@ -129,6 +129,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
+        expect(deleteButton).toHaveClass("btn-danger");
 
         fireEvent.click(deleteButton);
 
@@ -136,10 +137,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
         expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
-        expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
         expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "EWB" });
     });
-
 });
 
 

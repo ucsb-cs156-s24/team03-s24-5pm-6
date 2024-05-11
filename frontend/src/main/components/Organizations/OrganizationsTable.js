@@ -6,10 +6,7 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/organizatio
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function OrganizationsTable({
-    organizations,
-    currentUser,
-    testIdPrefix = "OrganizationsTable" }) {
+export default function OrganizationsTable({organizations, currentUser, testIdPrefix = "OrganizationsTable" }) {
 
     const navigate = useNavigate();
 
