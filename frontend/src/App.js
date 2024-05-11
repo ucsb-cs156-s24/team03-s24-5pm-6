@@ -23,6 +23,10 @@ import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewInd
 import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
 import MenuItemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
 
+import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
+import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
+import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
+
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
@@ -129,6 +133,21 @@ function App() {
             <>
               <Route exact path="/recommendationrequest/edit/:id" element={<RecommendationRequestEditPage />} />
               <Route exact path="/recommendationrequest/create" element={<RecommendationRequestCreatePage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/organizations" element={<UCSBOrganizationIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/organizations/edit/:id" element={<UCSBOrganizationEditPage />} />
+              <Route exact path="/organizations/create" element={<UCSBOrganizationCreatePage />} />
             </>
           )
         }
