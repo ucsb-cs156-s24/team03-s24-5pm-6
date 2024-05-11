@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/MenuItemReview/MenuItemReviewForm.js</title>
+    <title>Code coverage report for components/RecommendationRequests/RecommendationRequestForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/MenuItemReview</a> MenuItemReviewForm.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/RecommendationRequests</a> RecommendationRequestForm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -237,23 +237,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -393,7 +393,7 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 &nbsp;
-function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function RecommendationRequestForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 &nbsp;
     // Stryker disable all
     const {
@@ -413,19 +413,20 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 &nbsp;
-    // Stryker disable next-line all
-    // const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 &nbsp;
     return (
 &nbsp;
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
+&nbsp;
+&nbsp;
             &lt;Row&gt;
+&nbsp;
                 {initialContents &amp;&amp; (
                     &lt;Col&gt;
                         &lt;Form.Group className="mb-3" &gt;
                             &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
                             &lt;Form.Control
-                                data-testid="MenuItemReviewForm-id"
+                                data-testid="RecommendationRequestForm-id"
                                 id="id"
                                 type="text"
                                 {...register("id")}
@@ -438,109 +439,108 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
 &nbsp;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="itemId"&gt;Item ID&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="MenuItemReviewForm-itemId"
-                            id="itemId"
+                            data-testid="RecommendationRequestForm-requesterEmail"
+                            id="requesterEmail"
                             type="text"
-                            isInvalid={Boolean(errors.itemId)}
-                            {...register("itemId", { required: true })}
+                            isInvalid={Boolean(errors.requesterEmail)}
+                            {...register("requesterEmail", { required: true})}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.itemId &amp;&amp; 'ItemId is required.'}
+                            {errors.requesterEmail &amp;&amp; 'RequesterEmail is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
-&nbsp;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="dateReviewed"&gt;Date (iso format)&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="professorEmail"&gt;Professor Email&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="MenuItemReviewForm-dateReviewed"
-                            id="dateReviewed"
+                            data-testid="RecommendationRequestForm-professorEmail"
+                            id="professorEmail"
+                            type="text"
+                            isInvalid={Boolean(errors.professorEmail)}
+                            {...register("professorEmail", { required: "ProfessorEmail is required."})}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                            {errors.professorEmail?.message}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
+                &lt;/Col&gt;
+                &lt;Col&gt;
+                    &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="explanation"&gt;Explanation&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid={"RecommendationRequestForm-explanation"}
+                            id="explanation"
+                            type="text"
+                            isInvalid={Boolean(errors.explanation)}
+                            {...register("explanation", { required: true})}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                        {errors.explanation &amp;&amp; 'Explanation is required. '}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
+                &lt;/Col&gt;
+                &lt;Col&gt;
+                    &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="dateRequested"&gt;Date Requested(iso format)&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid="RecommendationRequestForm-dateRequested"
+                            id="dateRequested"
                             type="datetime-local"
-                            isInvalid={Boolean(errors.dateReviewed)}
-                            {...register("dateReviewed", { required: true, pattern: isodate_regex })}
+                            isInvalid={Boolean(errors.dateRequested)}
+                            {...register("dateRequested", { required: true, pattern: isodate_regex })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.dateReviewed &amp;&amp; 'DateReviewed is required. '}
+                            {errors.dateRequested &amp;&amp; 'DateRequested is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
-            &lt;/Row&gt;
-&nbsp;
-            &lt;Row&gt;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="reviewerEmail"&gt;Reviewer Email&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="dateNeeded"&gt;Date Needed(iso format)&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="MenuItemReviewForm-reviewerEmail"
-                            id="reviewerEmail"
-                            type="text"
-                            isInvalid={Boolean(errors.reviewerEmail)}
-                            {...register("reviewerEmail", {
-                                required: "ReviewerEmail is required."
-                            })}
+                            data-testid="RecommendationRequestForm-dateNeeded"
+                            id="dateNeeded"
+                            type="datetime-local"
+                            isInvalid={Boolean(errors.dateNeeded)}
+                            {...register("dateNeeded", { required: true, pattern: isodate_regex })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.reviewerEmail?.message}
+                            {errors.dateNeeded &amp;&amp; 'DateNeeded is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
-            &lt;/Row&gt;
-&nbsp;
-            &lt;Row&gt;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="stars"&gt;Stars&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="done"&gt;Done&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="MenuItemReviewForm-stars"
-                            id="stars"
-                            type="text"
-                            isInvalid={Boolean(errors.stars)}
-                            {...register("stars", {
-                                required: "Stars is required."
-                            })}
+                            data-testid="RecommendationRequestForm-done"
+                            id="done"
+                            type="boolean"
+                            isInvalid={Boolean(errors.done)}
+                            {...register("done", { required: true})}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.stars?.message}
+                            {errors.done &amp;&amp; 'Done is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
             &lt;/Row&gt;
-&nbsp;
-            &lt;Row&gt;
-                &lt;Col&gt;
-                    &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="comments"&gt;Comments&lt;/Form.Label&gt;
-                        &lt;Form.Control
-                            data-testid="MenuItemReviewForm-comments"
-                            id="comments"
-                            type="text"
-                            isInvalid={Boolean(errors.comments)}
-                            {...register("comments", {
-                                required: "Comment is required."
-                            })}
-                        /&gt;
-                        &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.comments?.message}
-                        &lt;/Form.Control.Feedback&gt;
-                    &lt;/Form.Group&gt;
-                &lt;/Col&gt;
-            &lt;/Row&gt;
-&nbsp;
+        
             &lt;Row&gt;
                 &lt;Col&gt;
                     &lt;Button
                         type="submit"
-                        data-testid="MenuItemReviewForm-submit"
+                        data-testid="RecommendationRequestForm-submit"
                     &gt;
                         {buttonLabel}
                     &lt;/Button&gt;
                     &lt;Button
                         variant="Secondary"
                         onClick={() =&gt; navigate(-1)}
-                        data-testid="MenuItemReviewForm-cancel"
+                        data-testid="RecommendationRequestForm-cancel"
                     &gt;
                         Cancel
                     &lt;/Button&gt;
@@ -551,7 +551,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
     )
 }
 &nbsp;
-export default MenuItemReviewForm;
+export default RecommendationRequestForm;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
