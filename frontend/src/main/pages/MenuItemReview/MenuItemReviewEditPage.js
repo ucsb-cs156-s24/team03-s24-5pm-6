@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export default function MenuItemReviewEditPage({storybook=false}) {
     let { id } = useParams();
 
-    const { data: review, _error, _status } =
+    const { data: reviews, _error, _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
             [`/api/menuitemreviews?id=${id}`],
@@ -21,23 +21,23 @@ export default function MenuItemReviewEditPage({storybook=false}) {
             }
         );
 
-    const objectToAxiosPutParams = (review) => ({
+    const objectToAxiosPutParams = (reviews) => ({
         url: "/api/menuitemreviews",
         method: "PUT",
         params: {
-            id: review.id,
+            id: reviews.id,
         },
         data: {
-            itemId: review.itemId,
-            reviewerEmail: review.reviewerEmail,
-            stars: review.stars,
-            dateReviewed: review.dateReviewed,
-            comments: review.comments,
+            itemId: reviews.itemId,
+            reviewerEmail: reviews.reviewerEmail,
+            stars: reviews.stars,
+            dateReviewed: reviews.dateReviewed,
+            comments: reviews.comments,
         }
     });
 
-    const onSuccess = (review) => {
-        toast(`MenuItemReview Updated - id: ${review.id} itemId: ${review.itemId}`);
+    const onSuccess = (reviews) => {
+        toast(`MenuItemReview Updated - id: ${reviews.id} itemId: ${reviews.itemId}`);
     }
 
     const mutation = useBackendMutation(
@@ -62,7 +62,7 @@ export default function MenuItemReviewEditPage({storybook=false}) {
             <div className="pt-2">
                 <h1>Edit MenuItemReview</h1>
                 {
-                    review && <MenuItemReviewForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={review} />
+                    reviews && <MenuItemReviewForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={reviews} />
                 }
             </div>
         </BasicLayout>
