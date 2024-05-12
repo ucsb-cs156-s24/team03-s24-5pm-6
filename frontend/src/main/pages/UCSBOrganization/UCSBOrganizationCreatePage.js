@@ -1,32 +1,49 @@
-import React from 'react';
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { rest } from "msw";
+import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import OrganizationsForm from "main/components/Organizations/OrganizationsForm";
+import { Navigate } from 'react-router-dom'
+import { useBackendMutation } from "main/utils/useBackend";
+import { toast } from "react-toastify";
 
-import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage"
+export default function UCSBOrganizationCreatePage({storybook=false}) {
 
-export default {
-    title: 'pages/UCSBOrganization/UCSBOrganizationCreatePage',
-    component: UCSBOrganizationCreatePage
-};
+  const objectToAxiosParams = (organization) => ({
+    url: "/api/ucsborganizations/post",
+    method: "POST",
+    params: {
+     orgCode: organization.orgCode,
+     orgTranslationShort: organization.orgTranslationShort,
+     orgTranslation: organization.orgTranslation,
+     inactive: organization.inactive
+    }
+  });
 
-const Template = () => <UCSBOrganizationCreatePage storybook={true} />;
+  const onSuccess = (organization) => {
+    toast(`New organization Created - orgCode: ${organization.orgCode} orgTranslationShort: ${organization.orgTranslationShort} orgTranslation: ${organization.orgTranslation} inactive: ${organization.inactive}`);
+  }
 
-export const Default = Template.bind({});
-Default.parameters = {
-    msw: [
-        rest.get('/api/currentUser', (_req, res, ctx) => {
-            return res(ctx.json(apiCurrentUserFixtures.userOnly));
-        }),
-        rest.get('/api/systemInfo', (_req, res, ctx) => {
-            return res(ctx.json(systemInfoFixtures.showingNeither));
-        }),
-        rest.post('/ucsborganizations/post', (req, res, ctx) => {
-            window.alert("POST: " + JSON.stringify(req.url));
-            return res(ctx.status(200),ctx.json({}));
-        }),
-    ]
+  const mutation = useBackendMutation(
+    objectToAxiosParams,
+     { onSuccess }, 
+     // Stryker disable next-line all : hard to set up test for caching
+     ["/api/ucsborganizations/all"] // mutation makes this key stale so that pages relying on it reload
+     );
+
+  const { isSuccess } = mutation
+
+  const onSubmit = async (data) => {
+    mutation.mutate(data);
+  }
+
+  if (isSuccess && !storybook) {
+    return <Navigate to="/ucsborganizations" />
+  }
+
+  return (
+    <BasicLayout>
+      <div className="pt-2">
+        <h1>Create New Organization</h1>
+        <OrganizationsForm submitAction={onSubmit} />
+      </div>
+    </BasicLayout>
+  )
 }
-
-
-
