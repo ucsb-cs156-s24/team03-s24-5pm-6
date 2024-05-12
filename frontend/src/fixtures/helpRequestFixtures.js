@@ -25,7 +25,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "41",
             "requestTime": "2023-01-03T00:00:00",
             "explanation": "luigi please stop",
-            "solved": false
+            "solved": true
         },
         {
             "id": 3,
