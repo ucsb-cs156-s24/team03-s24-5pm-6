@@ -3,14 +3,14 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage"
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage"
 
 export default {
-    title: 'pages/UCSBOrganization/UCSBOrganizationCreatePage',
-    component: UCSBOrganizationCreatePage
+    title: 'pages/Articles/ArticlesCreatePage',
+    component: ArticlesCreatePage
 };
 
-const Template = () => <UCSBOrganizationCreatePage storybook={true} />;
+const Template = () => <ArticlesCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -21,7 +21,7 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.post('/ucsborganizations/post', (req, res, ctx) => {
+        rest.post('/api/articles/post', (req, res, ctx) => {
             window.alert("POST: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
