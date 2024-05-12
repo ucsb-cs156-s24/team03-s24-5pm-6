@@ -38,7 +38,7 @@ ThreeItemsOrdinaryUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/restaurants/all', (_req, res, ctx) => {
+        rest.get('/api/ucsbdiningcommonsmenuitem/all', (_req, res, ctx) => {
             return res(ctx.json(ucsbDiningCommonsMenuItemFixtures.threeMenuItems));
         }),
     ],
