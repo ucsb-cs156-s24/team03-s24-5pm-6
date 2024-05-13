@@ -6,15 +6,12 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/organizatio
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function OrganizationsTable({
-    organizations,
-    currentUser,
-    testIdPrefix = "OrganizationsTable" }) {
+export default function OrganizationsTable({organizations, currentUser, testIdPrefix = "OrganizationsTable" }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`ucsborganizations/edit/${cell.row.values.orgCode}`)
+        navigate(`/ucsborganizations/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -54,8 +51,16 @@ export default function OrganizationsTable({
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix));
     } 
 
+    const orgWithInactive = organizations ? organizations.map((organization) => {
+        return {
+          ...organization,
+          inactive: organization.inactive ? "true" : "false",
+        };
+      })
+    : [];
+
     return <OurTable
-        data={organizations}
+        data={orgWithInactive}
         columns={columns}
         testid={testIdPrefix}
     />;
