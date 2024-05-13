@@ -7,7 +7,6 @@ import { useCurrentUser , hasRole} from 'main/utils/currentUser'
 import { Button } from 'react-bootstrap';
 
 export default function UCSBOrganizationIndexPage() {
-
     const currentUser = useCurrentUser();
 
     const { data: organizations, error: _error, status: _status } =
