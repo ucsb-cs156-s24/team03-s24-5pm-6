@@ -63,6 +63,11 @@ export default function HelpRequestTable({ helpRequests, currentUser }) {
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, "HelpRequestTable"));
     } 
 
+    // Change boolean values to string as booleans are not rendered in React
+    helpRequests.forEach(function(helpRequest) {
+        helpRequest.solved = helpRequest.solved.toString();
+    });
+
     return <OurTable
         data={helpRequests}
         columns={columns}
