@@ -5,7 +5,6 @@ import { MemoryRouter } from "react-router-dom";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
@@ -63,7 +62,6 @@ describe("UCSBOrganizationCreatePage tests", () => {
         };
 
         axiosMock.onPost("/api/ucsborganizations/post").reply(202, organization);
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
