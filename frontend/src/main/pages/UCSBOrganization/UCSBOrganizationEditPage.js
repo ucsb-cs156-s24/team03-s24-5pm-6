@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export default function UCSBOrganizationEditPage({storybook=false}) {
     let { id } = useParams();
 
-    const { data: organizations, _error, _status } =
+    const { data: org, _error, _status } =
         useBackend(
             // Stryker disable next-line all : don't test internal caching of React Query
             [`/api/ucsborganizations?orgCode=${id}`],
@@ -35,8 +35,8 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
         }
     });
 
-    const onSuccess = (organizations) => {
-        toast(`Organization Updated - orgCode: ${organizations.orgCode} orgTranslationShort: ${organizations.orgTranslationShort} orgTranslation: ${organizations.orgTranslation} inactive: ${organizations.inactive}`);
+    const onSuccess = (org) => {
+        toast(`Organization Updated - orgCode: ${org.orgCode} orgTranslationShort: ${org.orgTranslationShort} orgTranslation: ${org.orgTranslation} inactive: ${org.inactive}`);
     }
 
     const mutation = useBackendMutation(
@@ -61,7 +61,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
             <div className="pt-2">
                 <h1>Edit Organization</h1>
                 {
-                    organizations && <OrganizationsForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={organizations} />
+                    org && <OrganizationsForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={org} />
                 }
             </div>
         </BasicLayout>
