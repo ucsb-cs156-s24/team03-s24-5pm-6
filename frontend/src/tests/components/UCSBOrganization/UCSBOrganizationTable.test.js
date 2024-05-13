@@ -104,7 +104,9 @@ describe("OrganizationsTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
-    const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Delete-button`
+    );
     expect(deleteButton).toBeInTheDocument();
   });
 
@@ -142,7 +144,6 @@ describe("OrganizationsTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)
     ).toHaveTextContent("ZPR");
-
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -222,7 +223,7 @@ describe("OrganizationsTable tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
   });
 
-  test("correctly renders inactive status based on organization.inactive", () => {
+  test("correctly renders inactive status", () => {
     const currentUser = currentUserFixtures.adminUser;
     const organizations = [
       { ...organizationFixtures.threeOrganizations[0], inactive: true },
@@ -244,8 +245,8 @@ describe("OrganizationsTable tests", () => {
     expect(inactiveStatusFalse).toHaveTextContent('false');
   });
 
-  test("Check with empty input", async () => {
-    // arrange
+  test("correctly handles when there is empty input", async () => {
+
     const currentUser = currentUserFixtures.adminUser;
 
     // act - render the component

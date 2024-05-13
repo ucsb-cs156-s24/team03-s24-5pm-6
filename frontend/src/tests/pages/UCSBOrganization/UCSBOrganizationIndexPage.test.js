@@ -90,7 +90,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
         axiosMock.onGet("/api/ucsborganizations/all").timeout();
 
         const restoreConsole = mockConsole();
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>

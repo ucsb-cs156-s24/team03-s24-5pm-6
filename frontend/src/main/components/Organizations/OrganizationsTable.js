@@ -51,8 +51,7 @@ export default function OrganizationsTable({organizations, currentUser, testIdPr
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix));
     } 
 
-    const orgWithInactive = organizations
-    ? organizations.map((organization) => {
+    const orgWithInactive = organizations ? organizations.map((organization) => {
         return {
           ...organization,
           inactive: organization.inactive ? "true" : "false",
