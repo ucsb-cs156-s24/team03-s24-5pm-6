@@ -38,6 +38,13 @@ public class ArticlesWebIT extends WebTestCase {
         assertThat(page.getByTestId("ArticlesTable-cell-row-0-col-explanation"))
                 .hasText("I am testing this.");
 
+        page.getByTestId("ArticlesTable-cell-row-0-col-Edit-button").click();
+        assertThat(page.getByText("Edit Article")).isVisible();
+        page.getByTestId("ArticlesForm-explanation").fill("Changing this.");
+        page.getByTestId("ArticlesForm-submit").click();
+
+        assertThat(page.getByTestId("ArticlesTable-cell-row-0-col-explanation")).hasText("Changing this.");
+
         page.getByTestId("ArticlesTable-cell-row-0-col-Delete-button").click();
 
         assertThat(page.getByTestId("ArticlesTable-cell-row-0-col-name")).not().isVisible();

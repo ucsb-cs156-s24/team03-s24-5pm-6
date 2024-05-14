@@ -84,6 +84,25 @@ describe("ArticlesIndexPage tests", () => {
         expect(screen.queryByText("Create Article")).not.toBeInTheDocument();
     });
     
+
+    test("No with Create Button for non-admin user", async () => {
+        // arrange
+        setupUserOnly();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/articles/all").reply(200, []);
+
+        // act
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticlesIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        expect(screen.queryByText("Create Article")).not.toBeInTheDocument();
+    });
+
     test("renders three articles correctly for regular user", async () => {
         
         // arrange
