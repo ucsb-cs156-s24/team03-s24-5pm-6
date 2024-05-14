@@ -171,5 +171,3 @@ describe("ArticlesIndexPage tests", () => {
     });
 
 });
-
-
