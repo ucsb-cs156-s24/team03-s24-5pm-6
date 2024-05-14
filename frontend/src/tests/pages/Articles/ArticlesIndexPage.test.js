@@ -83,7 +83,7 @@ describe("ArticlesIndexPage tests", () => {
 
         expect(screen.queryByText("Create Article")).not.toBeInTheDocument();
     });
-    
+
     test("renders three articles correctly for regular user", async () => {
         
         // arrange
