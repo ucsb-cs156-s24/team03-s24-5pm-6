@@ -25,34 +25,33 @@ public class UCSBOrganizationWebIT extends WebTestCase {
 
         page.getByText("Create UCSB Organization").click();
         assertThat(page.getByText("Create New Organization")).isVisible();
-        page.getByTestId("UCSBOrganizationForm-orgCode").fill("SWE");
-        page.getByTestId("UCSBOrganizationForm-orgTranslationShort").fill("UCSB SWE");
-        page.getByTestId("UCSBOrganizationForm-orgTranslation").fill("UCSB Society of Women Engineers");
-        page.getByTestId("UCSBOrganizationForm-inactive").fill("false");
-        page.getByTestId("UCSBOrganizationForm-submit").click();
+        page.getByTestId("OrganizationsForm-orgCode").fill("SWE");
+        page.getByTestId("OrganizationsForm-orgTranslationShort").fill("UCSB SWE");
+        page.getByTestId("OrganizationsForm-orgTranslation").fill("UCSB Society of Women Engineers");
+        page.getByTestId("OrganizationsForm-inactive").fill("false");
+        page.getByTestId("OrganizationsForm-submit").click();
 
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslation"))
-                .hasText("UCSB Society of Women Engineers");
+        assertThat(page.getByTestId("OrganizationsTable-cell-row-0-col-inactive")).hasText("false");
 
-        page.getByTestId("UCSBOrganizationTable-cell-row-0-col-Edit-button").click();
+        page.getByTestId("OrganizationsTable-cell-row-0-col-Edit-button").click();
         assertThat(page.getByText("Edit Organization")).isVisible();
-        page.getByTestId("UCSBOrganizationForm-orgTranslation").fill("Society of Women Engineers");
-        page.getByTestId("UCSBOrganizationForm-submit").click();
+        page.getByTestId("OrganizationsForm-inactive").fill("true");
+        page.getByTestId("OrganizationsForm-submit").click();
 
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslation")).hasText("Society of Women Engineers");
+        assertThat(page.getByTestId("OrganizationsTable-cell-row-0-col-inactive")).hasText("true");
 
-        page.getByTestId("UCSBOrganizationTable-cell-row-0-col-Delete-button").click();
+        page.getByTestId("OrganizationsTable-cell-row-0-col-Delete-button").click();
 
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgCode")).not().isVisible();
+        assertThat(page.getByTestId("OrganizationsTable-cell-row-0-col-orgCode")).not().isVisible();
     }
 
     @Test
-    public void regular_user_cannot_create_restaurant() throws Exception {
+    public void regular_user_cannot_create_organization() throws Exception {
         setupUser(false);
 
         page.getByText("Organizations").click();
 
         assertThat(page.getByText("Create Organization")).not().isVisible();
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgCode")).not().isVisible();
+        assertThat(page.getByTestId("OrganizationsTable-cell-row-0-col-orgCode")).not().isVisible();
     }
 }
