@@ -55,7 +55,7 @@ public class HelpRequestWebIT extends WebTestCase {
     }
 
     @Test
-    public void regular_user_cannot_create_restaurant() throws Exception {
+    public void regular_user_cannot_create_helprequest() throws Exception {
         setupUser(false);
 
         page.getByText("HelpRequest").click();
