@@ -127,7 +127,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         <Form.Control
                             data-testid="RecommendationRequestForm-done"
                             id="done"
-                            type="boolean"
+                            type="string"
                             isInvalid={Boolean(errors.done)}
                             {...register("done", { required: true})}
                         />
